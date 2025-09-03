@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Accessibility Aptitude Test – HTML, CSS & JavaScript</title>
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #111111;
+      --muted: #555555;
+      --accent: #0b6bcb;
+      --ok: #0a7f3f;
+      --bad: #b00020;
+      --card: #f5f7fa;
+    }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem 1rem 4rem;
+    }
+    header {
+      margin-bottom: 1rem;
+    }
+    h1 { line-height: 1.2; margin: 0 0 .25rem; }
+    .sub { color: var(--muted); margin: 0 0 1rem; }
+
+    fieldset {
+      border: 1px solid #d6d9dd;
+      border-radius: .75rem;
+      padding: 1rem 1rem .5rem;
+      background: var(--card);
+      margin: 1rem 0;
+    }
+    legend { font-weight: 700; padding: 0 .25rem; }
+
+    .option { display: grid; grid-template-columns: auto 1fr; gap: .5rem; align-items: start; margin-bottom: .25rem; }
+    .option input { margin-top: .2rem; }
+
+    .controls { display: flex; gap: .75rem; flex-wrap: wrap; align-items: center; margin: 1.25rem 0 0; }
+    button {
+      border: none; border-radius: .6rem; padding: .7rem 1rem; font-weight: 600; cursor: pointer;
+      background: var(--accent); color: #fff;
+    }
+    button.secondary { background: #e8ecf2; color: #0f1a2a; }
+
+    .correct { border: 2px solid var(--ok); }
+    .incorrect { border: 2px solid var(--bad); }
+
+    .feedback { margin-top: .5rem; font-size: .95rem; }
+    .feedback.ok { color: var(--ok); }
+    .feedback.bad { color: var(--bad); }
+
+    #results { margin-top: 1rem; padding: 1rem; border: 2px solid #cfd6df; border-radius: .75rem; background: #eef3f9; }
+
+    /* Focus styles */
+    :where(a, button, input[type="radio"]) {
+      outline-offset: 3px;
+    }
+    :where(a, button, input[type="radio"]):focus-visible {
+      outline: 3px solid #1a73e8;
+    }
+
+    /* Visually hidden utility (still available to AT) */
+    .visually-hidden {
+      position: absolute !important;
+      width: 1px; height: 1px;
+      padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0 0 0 0);
+      white-space: nowrap; border: 0;
+    }
+
+    .footer-note { color: var(--muted); font-size: .95rem; margin-top: .5rem; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Accessibility Aptitude Test – HTML, CSS &amp; JavaScript</h1>
+      <p class="sub">10 multiple‑choice questions • ~20 minutes • One correct answer per question</p>
+    </header>
+
+    <form id="quiz" novalidate>
+      <!-- Q1 -->
+      <fieldset id="q1">
+        <legend>1. Which of the following is the most appropriate way to provide alternative text for a purely decorative image?</legend>
+        <div class="option"><input type="radio" name="q1" id="q1a" value="A"><label for="q1a"><code>&lt;img src="decorative.png" alt="Decorative background image"&gt;</code></label></div>
+        <div class="option"><input type="radio" name="q1" id="q1b" value="B"><label for="q1b"><code>&lt;img src="decorative.png" alt=""&gt;</code></label></div>
+        <div class="option"><input type="radio" name="q1" id="q1c" value="C"><label for="q1c"><code>&lt;img src="decorative.png"&gt;</code></label></div>
+        <div class="option"><input type="radio" name="q1" id="q1d" value="D"><label for="q1d"><code>&lt;img src="decorative.png" aria-hidden="true" alt="Decoration"&gt;</code></label></div>
+        <p class="feedback" aria-live="polite"></p>
+      </fieldset>
+
+      <!-- Q2 -->
+      <fieldset id="q2">
+        <legend>2. Which HTML element is best for marking up a main page heading?</legend>
+        <div class="option"><input type="radio" name="q2" id="q2a" value="A"><label for="q2a"><code>&lt;h1&gt;</code></label></div>
+        <div class="option"><input type="radio" name="q2" id="q2b" value="B"><label for="q2b"><code>&lt;header&gt;</code></label></div>
+        <div class="option"><input type="radio" name="q2" id="q2c" value="C"><label for="q2c"><code>&lt;title&gt;</code></label></div>
+        <div class="option"><input type="radio" name="q2" id="q2d" value="D"><label for="q2d"><code>&lt;div&gt;</code></label></div>
+        <p class="feedback" aria-live="polite"></p>
+      </fieldset>
+
+      <!-- Q3 -->
+      <fieldset id="q3">
+        <legend>3. A form field is missing a visible label. Which is the best accessible solution?</legend>
+        <div class="option"><input type="radio" name="q3" id="q3a" value="A"><label for="q3a">Add a <code>placeholder</code> attribute describing the field.</label></div>
+        <div class="option"><input type="radio" name="q3" id="q3b" value="B"><label for="q3b">Add an <code>aria-label</code> describing the field.</label></div>
+        <div class="option"><input type="radio" name="q3" id="q3c" value="C"><label for="q3c">Add a <code>&lt;label&gt;</code> element linked to the input.</label></div>
+        <div class="option"><input type="radio" name="q3" id="q3d" value="D"><label for="q3d">Give the input a <code>title</code> attribute.</label></div>
+        <p class="feedback" aria-live="polite"></p>
+      </fieldset>
+
+      <!-- Q4 -->
+      <fieldset id="q4">
+        <legend>4. Why is it important to maintain visible focus indicators on links and buttons?</legend>
+        <div class="option"><input type="radio" name="q4" id="q4a" value="A"><label for="q4a">To help users with slow internet connections.</label></div>
+        <div class="option"><input type="radio" name="q4" id="q4b" value="B"><label for="q4b">To assist screen reader users.</label></div>
+        <div class="option"><input type="radio" name="q4" id="q4c" value="C"><label for="q4c">To show keyboard users where they are on the page.</label></div>
+        <div class="option"><input type="radio" name="q4" id="q4d" value="D"><label for="q4d">To improve SEO rankings.</label></div>
+        <p class="feedback" aria-live="polite"></p>
+      </fieldset>
+
+      <!-- Q5 (replacement) -->
+      <fieldset id="q5">
+        <legend>5. Which CSS technique is most appropriate for hiding content visually while keeping it available to screen readers?</legend>
+        <div class="option"><input type="radio" name="q5" id="q5a" value="A"><label for="q5a"><code>display: none;</code></label></div>
+        <div class="option"><input type="radio" name="q5" id="q5b" value="B"><label for="q5b"><code>visibility: hidden;</code></label></div>
+        <div class="option"><input type="radio" name="q5" id="q5c" value="C"><label for="q5c"><code>position: absolute; left: -9999px;</code></label></div>
+        <div class="option"><input type="radio" name="q5" id="q5d" value="D"><label for="q5d"><code>opacity: 0;</code></label></div>
+        <p class="feedback" aria-live="polite"></p>
+      </fieldset>
+
+      <!-- Q6 -->
+      <fieldset id="q6">
+        <legend>6. When creating a custom button using &lt;div&gt;, which of the following is NOT required for accessibility?</legend>
+        <div class="option"><input type="radio" name="q6" id="q6a" value="A"><label for="q6a">Adding <code>role="button"</code></label></div>
+        <div class="option"><input type="radio" name="q6" id="q6b" value="B"><label for="q6b">Making it focusable with <code>tabindex="0"</code></label></div>
+        <div class="option"><input type="radio" name="q6" id="q6c" value="C"><label for="q6c">Adding keyboard event handling for Enter/Space</label></div>
+        <div class="option"><input type="radio" name="q6" id="q6d" value="D"><label for="q6d">Styling it to look like a native button</label></div>
+        <p class="feedback" aria-live="polite"></p>
+      </fieldset>
+
+      <!-- Q7 -->
+      <fieldset id="q7">
+        <legend>7. Which ARIA attribute would you use to label an icon‑only button (e.g., a magnifying glass for “Search”)?</legend>
+        <div class="option"><input type="radio" name="q7" id="q7a" value="A"><label for="q7a"><code>aria-labelledby</code></label></div>
+        <div class="option"><input type="radio" name="q7" id="q7b" value="B"><label for="q7b"><code>aria-hidden</code></label></div>
+        <div class="option"><input type="radio" name="q7" id="q7c" value="C"><label for="q7c"><code>aria-label</code></label></div>
+        <div class="option"><input type="radio" name="q7" id="q7d" value="D"><label for="q7d"><code>role="img"</code></label></div>
+        <p class="feedback" aria-live="polite"></p>
+      </fieldset>
+
+      <!-- Q8 (replacement) -->
+      <fieldset id="q8">
+        <legend>8. When creating a custom dropdown with JavaScript, what is the most important first step to make it accessible?</legend>
+        <div class="option"><input type="radio" name="q8" id="q8a" value="A"><label for="q8a">Ensure it only opens with a mouse click.</label></div>
+        <div class="option"><input type="radio" name="q8" id="q8b" value="B"><label for="q8b">Make it keyboard operable for opening and selecting options.</label></div>
+        <div class="option"><input type="radio" name="q8" id="q8c" value="C"><label for="q8c">Hide it from screen readers until fully styled.</label></div>
+        <div class="option"><input type="radio" name="q8" id="q8d" value="D"><label for="q8d">Add animations before making it functional.</label></div>
+        <p class="feedback" aria-live="polite"></p>
+      </fieldset>
+
+      <!-- Q9 -->
+      <fieldset id="q9">
+        <legend>9. Which of these is the quickest way to test basic keyboard accessibility?</legend>
+        <div class="option"><input type="radio" name="q9" id="q9a" value="A"><label for="q9a">Use a colour contrast analyser tool</label></div>
+        <div class="option"><input type="radio" name="q9" id="q9b" value="B"><label for="q9b">Navigate the page using only the Tab and Enter keys</label></div>
+        <div class="option"><input type="radio" name="q9" id="q9c" value="C"><label for="q9c">Install a screen reader and test with it</label></div>
+        <div class="option"><input type="radio" name="q9" id="q9d" value="D"><label for="q9d">Check the HTML source code for headings</label></div>
+        <p class="feedback" aria-live="polite"></p>
+      </fieldset>
+
+      <!-- Q10 -->
+      <fieldset id="q10">
+        <legend>10. What is the main purpose of using semantic HTML elements (like &lt;header&gt;, &lt;main&gt;, &lt;footer&gt;)?</legend>
+        <div class="option"><input type="radio" name="q10" id="q10a" value="A"><label for="q10a">To make the site load faster</label></div>
+        <div class="option"><input type="radio" name="q10" id="q10b" value="B"><label for="q10b">To provide hooks for JavaScript</label></div>
+        <div class="option"><input type="radio" name="q10" id="q10c" value="C"><label for="q10c">To give meaning and structure to content for assistive technologies</label></div>
+        <div class="option"><input type="radio" name="q10" id="q10d" value="D"><label for="q10d">To automatically improve site design</label></div>
+        <p class="feedback" aria-live="polite"></p>
+      </fieldset>
+
+      <div class="controls">
+        <button type="submit" id="check">Check answers</button>
+        <button type="button" id="reset" class="secondary">Reset</button>
+        <button type="button" id="print" class="secondary">Print</button>
+        <span class="footer-note" aria-live="polite">Tip: you can tab through options and press space to select.</span>
+      </div>
+
+      <div id="results" tabindex="-1" role="status" aria-live="polite" aria-atomic="true"></div>
+    </form>
+  </div>
+
+  <script>
+    const answerKey = {
+      q1: 'B', q2: 'A', q3: 'C', q4: 'C', q5: 'C', q6: 'D', q7: 'C', q8: 'B', q9: 'B', q10: 'C'
+    };
+
+    const quiz = document.getElementById('quiz');
+    const results = document.getElementById('results');
+
+    function getSelected(name) {
+      const checked = quiz.querySelector(`input[name="${name}"]:checked`);
+      return checked ? checked.value : null;
+    }
+
+    function clearFeedback() {
+      quiz.querySelectorAll('fieldset').forEach(fs => {
+        fs.classList.remove('correct', 'incorrect');
+        const fb = fs.querySelector('.feedback');
+        if (fb) fb.textContent = '';
+      });
+      results.textContent = '';
+    }
+
+    quiz.addEventListener('submit', (e) => {
+      e.preventDefault();
+      let score = 0;
+      let unanswered = 0;
+      clearFeedback();
+
+      Object.keys(answerKey).forEach(q => {
+        const fs = document.getElementById(q);
+        const correct = answerKey[q];
+        const chosen = getSelected(q);
+        const fb = fs.querySelector('.feedback');
+
+        if (!chosen) {
+          unanswered++;
+          fs.classList.add('incorrect');
+          if (fb) {
+            fb.className = 'feedback bad';
+            fb.textContent = 'No answer selected.';
+          }
+          return;
+        }
+
+        if (chosen === correct) {
+          score++;
+          fs.classList.add('correct');
+          if (fb) {
+            fb.className = 'feedback ok';
+            fb.textContent = 'Correct';
+          }
+        } else {
+          fs.classList.add('incorrect');
+          if (fb) {
+            fb.className = 'feedback bad';
+            fb.innerHTML = `Incorrect. Correct answer: <strong>${correct}</strong>`;
+          }
+        }
+      });
+
+      const percent = Math.round((score / Object.keys(answerKey).length) * 100);
+      results.innerHTML = `<strong>Score:</strong> ${score}/10 (${percent}%). ${unanswered ? `Unanswered: ${unanswered}.` : ''}`;
+      results.focus();
+    });
+
+    document.getElementById('reset').addEventListener('click', () => {
+      quiz.reset();
+      clearFeedback();
+      document.getElementById('q1').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+
+    document.getElementById('print').addEventListener('click', () => {
+      window.print();
+    });
+  </script>
+</body>
+</html>
